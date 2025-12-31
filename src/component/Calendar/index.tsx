@@ -19,20 +19,20 @@ const monthNames = [
   "12月",
 ];
 
-interface CalenderProps {
+export interface CalendarProps {
   defaultValue?: Date;
   onChange?: (date: Date) => void;
 }
 
-interface CalenderRef {
+interface CalendarRef {
   getDate: () => Date;
   setDate: (date: Date) => void;
 }
 
 // 获取当前时间
-export const Calender: React.ForwardRefRenderFunction<
-  CalenderRef,
-  CalenderProps
+export const Calendar: React.ForwardRefRenderFunction<
+  CalendarRef,
+  CalendarProps
 > = (props, ref) => {
   const { defaultValue = new Date(), onChange } = props;
 
