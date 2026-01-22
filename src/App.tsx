@@ -12,11 +12,14 @@ import {
   ConfigContext,
   ConfigProvider,
 } from "./component/Space/ConfigProvider";
+import { createPortal } from "react-dom";
+import CRUDTable from "./test/CRDUtable";
+import ProTable from "./test/ProTable";
 
 const LazyAaa = React.lazy(() => import("./Aaa"));
 
 const IconFont = createFromIconfont(
-  "//at.alicdn.com/t/c/font_4443338_a2wwqhorbk4.js"
+  "//at.alicdn.com/t/c/font_4443338_a2wwqhorbk4.js",
 );
 
 interface TestProps {
@@ -39,6 +42,14 @@ function App() {
   const handleCLick = () => {
     console.log("click");
   };
+
+  const content = (
+    <div className="btn">
+      <button>按钮</button>
+    </div>
+  );
+
+  // return createPortal(content, document.body);
 
   return (
     <>
@@ -91,7 +102,7 @@ function App() {
         size="40px"
       ></IconFont>
 
-      <ConfigProvider space={{ size: 20 }}>
+      {/* <ConfigProvider space={{ size: 20 }}>
         <Space direction="horizontal">
           <div className="box"></div>
           <div className="box"></div>
@@ -102,7 +113,10 @@ function App() {
           <div className="box"></div>
           <div className="box"></div>
         </Space>
-      </ConfigProvider>
+      </ConfigProvider> */}
+      {/* <CRUDTable /> */}
+
+      <ProTable />
     </>
   );
 }
