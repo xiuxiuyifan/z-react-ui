@@ -15,6 +15,7 @@ import {
 import { createPortal } from "react-dom";
 import CRUDTable from "./test/CRDUtable";
 import ProTable from "./test/ProTable";
+import Protal from "./component/Protal";
 
 const LazyAaa = React.lazy(() => import("./Aaa"));
 
@@ -89,7 +90,7 @@ function App() {
         }}
       /> */}
 
-      <IconAdd />
+      {/* <IconAdd />
 
       <IconEmail />
 
@@ -100,7 +101,7 @@ function App() {
         type="icon-gerenzhongxin-zhihui"
         fill="blue"
         size="40px"
-      ></IconFont>
+      ></IconFont> */}
 
       {/* <ConfigProvider space={{ size: 20 }}>
         <Space direction="horizontal">
@@ -116,7 +117,9 @@ function App() {
       </ConfigProvider> */}
       {/* <CRUDTable /> */}
 
-      <ProTable />
+      {/* <ProTable /> */}
+
+      {/* <Protal attach={document.body}>{content}</Protal> */}
     </>
   );
 }
