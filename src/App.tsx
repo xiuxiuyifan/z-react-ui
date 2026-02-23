@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Calendar } from "./component/Calendar";
 import CalendarTest from "./component/Calendar/test";
 import { Calendar1 } from "./component/Calendar1";
@@ -16,6 +16,7 @@ import { createPortal } from "react-dom";
 import CRUDTable from "./test/CRDUtable";
 import ProTable from "./test/ProTable";
 import Protal from "./component/Protal";
+import MutateObserver from "./component/MutateObserver";
 
 const LazyAaa = React.lazy(() => import("./Aaa"));
 
@@ -51,6 +52,18 @@ function App() {
   );
 
   // return createPortal(content, document.body);
+
+  const [className, setClassName] = useState("aaa");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setClassName("bbb");
+    }, 3000);
+  }, []);
+
+  const callback = function (mutationsList: MutationRecord[]) {
+    console.log(mutationsList);
+  };
 
   return (
     <>
@@ -120,6 +133,32 @@ function App() {
       {/* <ProTable /> */}
 
       {/* <Protal attach={document.body}>{content}</Protal> */}
+
+      {/* <div id="container" ref={containerRef}>
+        <div className={className}>
+          {className === "aaa" ? (
+            <div>aaa</div>
+          ) : (
+            <div>
+              <p>bbb</p>
+            </div>
+          )}
+        </div>
+      </div> */}
+
+      <MutateObserver onMutate={callback}>
+        <div id="container">
+          <div className={className}>
+            {className === "aaa" ? (
+              <div>aaa</div>
+            ) : (
+              <div>
+                <p>bbb</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </MutateObserver>
     </>
   );
 }
